@@ -1,0 +1,39 @@
+<mat-toolbar color="primary">  
+  <mat-toolbar-row>
+    <mat-menu #homeMenu="matMenu">      
+      <a mat-menu-item routerLink="/users" class="active"><i class="fa fa-users fa-fw"></i> 
+        <mat-icon >add_circle</mat-icon>
+        Cadastro Usuários 
+      </a>
+      <a mat-menu-item routerLink="/deptos" class="active"><i class="fa fa-users fa-fw"></i> 
+        <mat-icon >add_circle</mat-icon>
+        Cadastro Departamentos 
+      </a>
+      <a mat-menu-item routerLink="/deptopermissao" class="active"><i class="fa fa-users fa-fw"></i> 
+        <mat-icon >add_circle</mat-icon>
+        Departamentos e Acesso 
+      </a>
+      <a mat-menu-item routerLink="/users" class="active"><i class="fa fa-users fa-fw"></i> 
+        <mat-icon>help</mat-icon>           
+        Help 
+      </a>
+    </mat-menu>
+    <button mat-button [matMenuTriggerFor]="homeMenu">                      
+        <mat-icon>dashboard</mat-icon>           
+      <span>GEDMOB</span>      
+    </button>
+    <span class="spacer"></span>    
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item> 
+        <mat-icon>settings</mat-icon>           
+        Configurações </button>
+      <button mat-menu-item> 
+        <mat-icon>help</mat-icon>           
+        Help </button>
+    </mat-menu>          
+    <button mat-button [matMenuTriggerFor]="appMenu">                      
+      <mat-icon>account_circle</mat-icon>       
+      Aldo Costa          
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
