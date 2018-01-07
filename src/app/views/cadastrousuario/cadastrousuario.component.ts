@@ -20,11 +20,11 @@ export class CadastrousuarioComponent implements OnInit {
   constructor(public dialog: MatDialog   ) {         
   }
 
-  openDialog(): void {
+  openDialog(user): void {
     let dialogRef = this.dialog.open(DgnovoComponent, {
       height: '350px',
       width: '100%',
-      data: new User()
+      data: user || new User()
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -32,6 +32,7 @@ export class CadastrousuarioComponent implements OnInit {
       if(result){
         let d = this._dataSource.data;
         d.push(result);
+        console.log(result);
         this._dataSource = new MatTableDataSource<User>(d);
       }
     });
@@ -43,9 +44,19 @@ export class CadastrousuarioComponent implements OnInit {
     u.Name = 'Aldo';
     u.Email = 'acs@aldocosta.com.br';
     ELEMENT_DATA.push(u);
+    ELEMENT_DATA.push(u);
+    ELEMENT_DATA.push(u);
+    ELEMENT_DATA.push(u);
+    ELEMENT_DATA.push(u);
 
     this._dataSource = new MatTableDataSource<User>(ELEMENT_DATA);    
   }
+
+  editar(item){
+    this.openDialog(item);    
+  }
+
+
 }
 
 // export class Element {

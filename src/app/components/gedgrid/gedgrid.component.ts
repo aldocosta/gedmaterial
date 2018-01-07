@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import { DataSource } from '@angular/cdk/collections';
 
@@ -12,13 +12,17 @@ export class GedgridComponent implements OnInit {
   @Input() displayedHeaders : [string];
   @Input() dataSource : MatTableDataSource<Element>;
   
+  @Output() selecionar: EventEmitter<any> = new EventEmitter();  
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
+
+  classofchoice:string;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this.dataSource.data);
+    console.log(this.dataSource.data);    
   }
 
   ngAfterViewInit(){
@@ -30,6 +34,11 @@ export class GedgridComponent implements OnInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  selecionarLinha(entidade){
+    this.selecionar.emit(entidade);
+    return false;
   }
 
 }

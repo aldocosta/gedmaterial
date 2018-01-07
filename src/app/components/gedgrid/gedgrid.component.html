@@ -4,26 +4,22 @@
   </mat-form-field>
 </div>
 <div class="example-container mat-elevation-z8">  
-  <mat-table #table [dataSource]="dataSource" matSort>  
-    
+  <mat-table #table [dataSource]="dataSource" matSort>
     <ng-container *ngFor='let item of displayedHeaders' matColumnDef="{{item.v}}">
       <mat-header-cell *matHeaderCellDef mat-sort-header> {{item.d}} </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element[item.v]}} </mat-cell>
-    </ng-container>    
-
-    <!-- <ng-container matColumnDef="position">
-        <mat-header-cell *matHeaderCellDef mat-sort-header> position </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.position}} </mat-cell>
-      </ng-container>
-      <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> name </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.name}} </mat-cell>
-      </ng-container>      
-      <ng-container matColumnDef="email">
-          <mat-header-cell *matHeaderCellDef mat-sort-header> email </mat-header-cell>
-          <mat-cell *matCellDef="let row"> {{row.email}} </mat-cell>
-        </ng-container>       -->
-    
+    </ng-container>
+    <ng-container matColumnDef="menu">
+      <mat-header-cell *matHeaderCellDef > Menu </mat-header-cell>
+      <mat-cell *matCellDef="let row"> 
+          <button mat-button color='primary' (click)='selecionarLinha(row)' class="gridbutton">
+            <i class="material-icons">mode_edit</i>
+          </button>
+          <button mat-button color='warn'>
+              <i class="material-icons">delete_forever</i>
+            </button>          
+      </mat-cell>
+    </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>

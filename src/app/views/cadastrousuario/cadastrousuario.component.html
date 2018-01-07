@@ -1,6 +1,6 @@
 <mat-toolbar color="secondary">  
     <mat-toolbar-row>
-        <button mat-button (click)="openDialog()">                      
+        <button mat-button (click)="openDialog(null)">                      
             <mat-icon>account_circle</mat-icon>           
           <span>Novo Usuário</span>      
         </button>
@@ -47,7 +47,8 @@
       <mat-card-content>      
 <app-gedgrid  
 [dataSource]="_dataSource"
-[displayedColumns] = "['Name','Email']"
+(selecionar)='editar($event)'
+[displayedColumns] = "['Name','Email','menu']"
 [displayedHeaders] = "[ {d:'Nome',v:'Name'},{d:'Email',v:'Email'}]">
 </app-gedgrid>
 </mat-card-content>

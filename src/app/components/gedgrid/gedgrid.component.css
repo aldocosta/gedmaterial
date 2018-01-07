@@ -23,3 +23,12 @@
     overflow: auto;
     max-height: 500px;
   }
+
+  .mat-column-menu {
+    display: flex;
+    justify-content:center;
+  }
+
+  .hidemenu{
+    display: none;
+  }
