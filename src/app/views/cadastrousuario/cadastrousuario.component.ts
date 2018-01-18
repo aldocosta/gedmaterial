@@ -13,8 +13,13 @@ import { User } from '../../model/user';
 })
 export class CadastrousuarioComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
-  // displayedColumns = ['position', 'name','email'];  
+  /**
+   * Campos da grid
+   */
   displayedColumns = ['Name','Email'];  
+  /**
+   * Fonte de dados da grid
+   */
   _dataSource : MatTableDataSource<User>;
   
   constructor(public dialog: MatDialog   ) {         
@@ -32,8 +37,7 @@ export class CadastrousuarioComponent implements OnInit {
       if(result){
         let d = this._dataSource.data;
         d.push(result);
-        console.log(result);
-        this._dataSource = new MatTableDataSource<User>(d);
+        this._dataSource._updateChangeSubscription();        
       }
     });
   }
@@ -44,30 +48,23 @@ export class CadastrousuarioComponent implements OnInit {
     u.Name = 'Aldo';
     u.Email = 'acs@aldocosta.com.br';
     ELEMENT_DATA.push(u);
+    u = new User();
+    u.Name = 'Costa';
+    u.Email = 'costa@aldocosta.com.br';
     ELEMENT_DATA.push(u);
-    ELEMENT_DATA.push(u);
-    ELEMENT_DATA.push(u);
+    u = new User();
+    u.Name = 'Santos';
+    u.Email = 'santos@aldocosta.com.br';
     ELEMENT_DATA.push(u);
 
     this._dataSource = new MatTableDataSource<User>(ELEMENT_DATA);    
+    
   }
 
   editar(item){
+    console.log(item);
     this.openDialog(item);    
   }
 
 
 }
-
-// export class Element {
-//   name: string;
-//   email:string;
-//   position: number;  
-// }
-
-// const ELEMENT_DATA: User[] = [
-//   { Name: 'Aldo Costa', Email:'aldocostasantos@hotmail.com'},
-//   { Name: 'Bernardo Abranches',Email:'bernardoabranches@gmail.com'},
-//   { Name: 'Helena Abranches',Email:'helenaabranches@yahoo.com'}
-// ];
-
